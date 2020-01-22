@@ -92,3 +92,88 @@ FROM user_tables;
 --sql에서는 대입의 개녑이 없다. (
 --sql = ---> 
 
+--WHERE 절 : 테이블에서 데이터를 조회할때
+--           조건에 맞는 행만 조회
+-- ex : userid 컬럼의 값이 brown인 행만 조회
+--brown , 'brown' 구분
+--컬럼, 문자열 상수
+SELECT * 
+FROM users 
+WHERE userid = 'brown';
+
+
+-- userid가 brown이 아닌 행만 조회 (brown을 제외한 4건)
+-- = 같을때 : = , 다를때 : !=, <> 
+
+SELECT * 
+FROM users
+WHERE userid != 'brown';
+
+-- emp 테이블에 존재하는 컬럼을 확인해보세요
+
+SELECT *
+FROM emp;
+
+-- emp 테이블에서 ename 컬럼 값이 JONES인 행만 조회
+-- *SQL KEY WORD는 대소문자를 가리지 않지만
+-- 컬럼의 값이나, 문자열 상수는 대소문자를 가린다
+--'JONES', 'jones'는 값이 다른 상수
+SELECT *
+FROM emp
+WHERE ename = 'JONES';
+
+SELECT *
+FROM emp; --emp
+DESC epm;
+5 > 10 --FALSE
+
+--emp 테이블에서 deptno(부서번호)가
+-- 30보다 크거나 같은 사원들만 조회
+SELECT *
+FROM emp;
+WHERE deptno >= 30;
+
+-- 문자열 : '문자열'
+-- 숫자 : 50
+-- 날짜 : ??? ---> 함수와 문자열을 결합하여 표현
+-- 문자열만 이용하여 표현 가능 ( 권장하지 않음)
+-- 국가별로 날짜 표기 방법
+-- 한국 : 년도 4자리 - 월2자리 -일자 2자리
+-- 미국 : 월 2자리 - 일자 2자리 - 년도 4자리
+-- 입사일자가 1980년 12월 17일 직원만 조회
+
+SELECT * 
+FROM emp;
+WHERE hirdete = '80/12/17';
+-- TO_DATE : 문자열을 date 타입으로 변경하는 함수
+SELECT * 
+FROM emp
+WHERE hiredate = '80/12/17';
+
+--TO_DATE : 문자열을 date 타입으로 변경하는 함수
+--TO_DATE(날짜형식 문자열, 첫번째 인자의 형식)
+SELECT *
+FROM emp
+WHERE hiredate = TO_DATE('19801217','YYYYMMDD');
+
+-- 범위연산
+-- sal 컬럼의 값이 1000에서 2000 사이인 사람
+-- sal >= 1000
+-- sal <= 2000
+SELECT *
+FROM emp
+WHERE sal >= 1000
+AND sal <= 2000;
+
+--범위 연산자를 부등호 대신에 BETWEEN AND 연산자로 대체
+SELECT * 
+FROM emp 
+WHERE sal BETWEEN 1000 AND 2000;
+
+--실습
+
+SELECT ename, hiredate
+FROM emp
+WHERE hiredate BETWEEN TO_DATE('19820101','YYYY/MM/DD') AND TO_DATE('19830101','YYYY/MM/DD');
+
+
