@@ -7,9 +7,9 @@
 
 
 SELECT TO_CHAR(SYSDATE, 'YYYY-MM/DD HH24:MI:SS'),
-    TO_CHAR(SYSDATE, 'D'),   --오늘은 2020/01/29 (수) --> 4 
+    TO_CHAR(SYSDATE, 'D'),                                  --오늘은 2020/01/29 (수) --> 4 
     TO_CHAR(SYSDATE, 'IW'),
-    TO_CHAR (TO_DATE('2019/12/31', 'YYYY/MM/DD'), 'IW') --1주 ? 해당주의 목요일을 기준
+    TO_CHAR (TO_DATE('2019/12/31', 'YYYY/MM/DD'), 'IW')     --1주 ? 해당주의 목요일을 기준
     FROM dual ;
     
   --emp 테이블의 hiredate(입사일자) 칼럼의 년월일 시:분:초
@@ -55,7 +55,6 @@ FROM dual;
 --date의 첫번째 일자는 어떻게 구할까?
 SELECT SYSDATE,
    ADD_MONTHS(LAST_DAY(SYSDATE)+1,-1)
-    
 FROM dual;
 
 --hiredate 값을 이용하여 해당 월의 첫번째 일자로 표현
@@ -213,8 +212,7 @@ SELECT ename, job, sal,
     CASE
         WHEN job = 'SALESMAN' AND sal > 1400 THEN  sal * 1.05
         WHEN job = 'SALESMAN' AND sal < 1400 THEN sal * 1.1
-        WHEN job = 'MANAGER' THEN sal * 1.1
-        WHEN job = 'PREIDENT' THEN sal * 1.2
+        
         ELSE sal
         END bouser_sal
 FROM emp;
@@ -226,5 +224,13 @@ FROM emp;
 
 
 
---2. DECODE 만 이용해서
-
+--2. CASE DECODE 섞어서 이용해서 만들기
+SELECT ename, job, sal,
+    CASE
+        WHEN job = 'SALESMAN' AND sal > 1400 THEN  sal * 1.05
+        WHEN job = 'SALESMAN' AND sal < 1400 THEN sal * 1.1
+        WHEN job = 'MANAGER' THEN sal * 1.1
+        WHEN job = 'PREIDENT' THEN sal * 1.2
+        ELSE sal
+        END bouser_sal
+FROM emp;

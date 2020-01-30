@@ -176,3 +176,10 @@ FROM emp;
 SELECT SYSDATE + 5 , SYSDATE + 1/24
 FROM dual;
 
+SELECT to_date('2019/12/31','YYYY/MM/DD')
+,to_date('2019/12/31','YYYY/MM/DD')-5,
+sysdate 
+FROM dual;
+
+SELECT TO_CHAR(SYSDATE,'YYYY-MM/DD HH24:MI:SS')
+
