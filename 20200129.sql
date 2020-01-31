@@ -226,11 +226,11 @@ FROM emp;
 
 --2. CASE DECODE 섞어서 이용해서 만들기
 SELECT ename, job, sal,
-    CASE
-        WHEN job = 'SALESMAN' AND sal > 1400 THEN  sal * 1.05
-        WHEN job = 'SALESMAN' AND sal < 1400 THEN sal * 1.1
-        WHEN job = 'MANAGER' THEN sal * 1.1
-        WHEN job = 'PREIDENT' THEN sal * 1.2
-        ELSE sal
-        END bouser_sal
-FROM emp;
+   DECODE(job, 'SALESMAN' , CASE
+                                    WHEN sal <1400 THEN sal * 1.05
+                                    WHEN sal <1400 THEN sal * 1.1
+                                    END,
+                                    'MANAGER', sal * 1.1, 
+                                    'PRESIDENT', sal * 1.2,
+                                    sal) bouns_sal
+                                    FROM emp;

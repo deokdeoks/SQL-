@@ -4,7 +4,7 @@ SELECT empno,ename,
  CASE 
  WHEN deptno = 10 THEN 'ACCONTING' 
  WHEN deptno = 20 THEN 'RESEARCH' 
- WHEN deptno = 30 THEN 'SALES'
+ WHEN deptno = 30 THEN 'S1ALES'
  WHEN deptno = 40 THEN 'OPERATIONS'
  else 'DDIT'
  END dname
@@ -71,7 +71,7 @@ GROUP BY deptno, ename;
 --GROUP BY 절이 없는 상태에서 그룹함수를 사용할 경우
 --전체행을 하나의 행으로 묶는다
 
---GROUP BY의 기준이 empno이면 결과수가 몇거ㅓㄴ??
+--GROUP BY의 기준이 empno이면 결과수가 몇건?
 --그룹화와 관련없는 임의의 문자열, 함수, 숫자등은 SELECT 절에 나오는 것이 가능
 SELECT 1, SYSDATE, SUM(sal) sum_sal, MAX(sal) max_sal, MIN(sal),ROUND(AVG(sal),2), 
 COUNT(sal), -- sal 컬럼의 값이 null이 아닌 row의 갯수
@@ -118,7 +118,7 @@ FROM emp
 GROUP BY deptno;
 
 
---function(group function 실습 grp4)
+--function(group function 실습 grp4)  
 SELECT TO_CHAR(hiredate,'YYYYMM'), COUNT(*) cnt
 FROM emp
 GROUP BY  TO_CHAR(hiredate, 'YYYYMM');
