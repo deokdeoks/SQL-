@@ -154,9 +154,17 @@ FROM buyer, prod
 WHERE buyer_lgu = prod_lgu;
 
 --join3 ½Ç½À
-SELECT mem_id,mem_name,prod_id,pord_name,cart_qtv
-FROM mem , prod
-WHERE mem_lgu = prod_lgu;
+SELECT member.mem_id, member.mem_name, prod.prod_id, prod.pord_name, cart.cart_qtv
+FROM member,cart , prod
+WHERE member.mem_id = cart.cart_member
+AND cart.cart_prod = prod.prod_id;
+
+SELECT * 
+FROM PRODUCT; 
+
+SELECT *
+FROM CYCLE;
+
 
 
 

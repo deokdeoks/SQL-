@@ -144,3 +144,6 @@ GROUP BY deptno);
 
 SELECT *
 FROM emp;
+
+
+--°úÁ¦ 
