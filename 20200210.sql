@@ -349,3 +349,12 @@ UPDATE emp_test SET deptno = 99
 WHERE ename = 'sally';
 
 ALTER TABLE emp_testt ENABLE CONSTRAINT fk_emp_test_dept_test;
+
+
+SELECT ename,hiredate
+FROM emp
+WHERE hiredate >= TO_DATE('19820101','YYYYMMDD')AND hiredate <= TO_DATE('19830101','YYYYMMDD');
+
+SELECT mem_id,mem_name
+FROM member
+WHERE mem_name LIKE '%Áø%';
