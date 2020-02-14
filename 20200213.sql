@@ -328,16 +328,18 @@ SELECT CASE WHEN GROUPING (job) = 1  AND GROUPING(deptno) =1 THEN 'ÃÑ°è'
     FROM emp
     GROUP BY ROLLUP (job,deptno);
     
-    
-SELECT DECODE (DECODE WHEN GROUPING (job) = 1  AND GROUPING(deptno) =1 THEN 'ÃÑ°è')
-    else job
-    END job,
-    deptno,
-    SUM(sal + NVL(comm,0))sal
+--°úÁ¦ 2-2
+SELECT DECODE ( GROUPING (job) + GROUPING (deptno), 2, 'ÃÑ',
+                                                   1, job,
+                                                   0, job)job,
+       DECODE  ( GROUPING (job) + GROUPING (deptno), 2, '°è',
+                                                  2, '¼Ò°è',
+                                                  0, deptno)deptno,
+ SUM(sal + NVL(comm,0))sal
     FROM emp
     GROUP BY ROLLUP (job,deptno);
     
-    
+
 
    
    

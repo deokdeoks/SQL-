@@ -23,7 +23,7 @@
 SELECT * 
 FROM emp test;
 
-CREATE TABLE emp_test;
+CREATE TABLE v_emp;
 
 INSERT INTO dept_test VALUES(99,'ddit2','´ëÀü');
 INSERT INTO emp_test (empno,ename,deptno)VALUES(9999,'brown',99);
@@ -170,6 +170,7 @@ CREATE TABLE emp_test (
     empno NUMBER(4),
     ename VARCHAR(10),
     deptno NUMBER(2),
+    hp VARCHAR2(20),
     
     CONSTRAINT pk_emp_test PRIMARY KEY (empno),
     CONSTRAINT fk_emp_test_dept_test FOREIGN KEY (deptno) REFERENCES dept_test (deptno)
@@ -308,9 +309,9 @@ DROP TABLE emp_test;
 
 CREATE TABLE emp_test (
 empno NUMBER(4),
-enmae VARCHAR2(10),
-deptno NUMBER(2));
-
+ename VARCHAR2(10),
+deptno NUMBER(2),
+hp    VARCHAR2(20)
 ALTER TABLE emp_test ADD CONSTRAINT pk_emp_test PRIMARY KEY(empno);
 ALTER TABLE emp_test ADD CONSTRAINT fk_emp_test_dept_test FOREIGN KEY(deptno)
                                                         REFERENCES dept_test(deptno);
