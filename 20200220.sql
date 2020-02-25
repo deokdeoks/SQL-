@@ -197,3 +197,20 @@ BEGIN
     END;
     /
     
+    
+ CREATE OR REPLACE PROCEDURE printemp(p_empno IN emp.empno%TYPE) IS
+    v_empno emp.empno%TYPE;
+    v_ename emp.ename%TYPE;
+    v_dname dept.dname%TYPE;
+ 
+ BEGIN  
+   SELECT empno, ename, dname INTO v_empno, v_ename, v_dname
+    FROM emp, dept
+    WHERE empno = p_empno AND emp.deptno = dept.deptno;
+    DBMS_OUTPUT.PUT_LINE(v_empno || ', ' || v_ename || ', ' || v_dname);
+ END;
+ /
+
+exec printemp(7499);
+
+SET SERVEROUTPUT ON;
